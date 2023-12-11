@@ -24,6 +24,18 @@ const getAdvertById = async (req, res) => {
     }
 };
 
+const getAdvertByUserAdvert = async (req, res) => {
+    try {
+        const { userAdvert } = req.params;
+        console.log("userAdvert", userAdvert);
+        const advert = await advertSchema.find({ userAdvert: userAdvert });
+        res.status(200).json({ msg: 'Advert', advert });
+    } catch (err) {
+        console.log(err);
+        res.send('You have a problem');
+    }
+}
+
 const updateAdvert = async (req, res) => {
     try {
         const { id } = req.params;
@@ -59,4 +71,4 @@ const getAllAdverts = async (req, res) => {
     }
 }
 
-module.exports = { addAdvert, getAdvertById, updateAdvert, deleteAdvert, getAllAdverts };
+module.exports = { addAdvert, getAdvertById, updateAdvert, deleteAdvert, getAllAdverts, getAdvertByUserAdvert };

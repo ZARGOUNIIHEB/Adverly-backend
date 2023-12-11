@@ -9,7 +9,10 @@ const AdvertSchema = mongoose.Schema({
     category: String,
     subCategory: String,
     productCondition: String,
-    imageAdvert: String
+    imageAdvert: [{
+        path: String
+    }],
+    userAdvert: String
     // addingDate: Date
 
 })

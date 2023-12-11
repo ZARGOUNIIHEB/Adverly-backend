@@ -9,7 +9,7 @@ const UserSchema = mongoose.Schema({
     },
     age: Number,
     phone: Number,
-    imageUser: String,
+    imageUser: [],
     email: {
         type: String,
         required: true,

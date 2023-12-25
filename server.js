@@ -3,14 +3,16 @@ const ConnectDb = require('./config/ConnectDb');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-
 const userRoute = require('./routes/UserRoutes');
 
 const advertRoute = require('./routes/AdvertRoutes');
 
+const messageRoute = require('./routes/MessageRoutes');
+
 require('dotenv').config();
 
 const app = express();
+
 
 const port = 5004;
 
@@ -64,13 +66,14 @@ app.post('/upload-images', upload.array('images', 10), (req, res) => {
 });
 
 
-
 //// Zone Multer /////////
 
 //Route principale pour les utilisateurs
 app.use('/user', userRoute);
-// //Route principale pour les annonces 
+//Route principale pour les annonces 
 app.use('/advert', advertRoute);
+//Route principale pour les messages
+app.use('/message', messageRoute);
 
 
 app.listen(port, (err) =>
